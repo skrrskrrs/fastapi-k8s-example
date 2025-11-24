@@ -50,6 +50,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
+        working-directory: ${{ github.workspace }}
         run: |
           docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
