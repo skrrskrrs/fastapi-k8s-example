@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fastapi-app
-          image: ghcr.io/dein-user/fastapi-k8s-example:__VERSION__
+          image: ghcr.io/skrrskrrs/fastapi-k8s-example:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
