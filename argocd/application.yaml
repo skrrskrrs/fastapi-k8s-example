@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastapi-k8s-example
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/skrrskrrs/fastapi-k8s-example.git'
+    targetRevision: main
+    path: k8s
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true      # löscht Ressourcen, die im Git entfernt wurden
+      selfHeal: true   # korrigiert Drift, wenn jemand manuell im Cluster ändert
+    syncOptions:
+      - CreateNamespace=true  # optional, wenn du keinen fertigen Namespace hast

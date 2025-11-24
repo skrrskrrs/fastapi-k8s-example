@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fastapi-app
+  labels:
+    app: fastapi-app
 spec:
   replicas: 3
   selector:
@@ -13,7 +15,20 @@ spec:
         app: fastapi-app
     spec:
       containers:
-      - name: fastapi-app
-        image: ghcr.io/skrrskrrs/fastapi-k8s-example:latest
-        ports:
-        - containerPort: 8080
+        - name: fastapi-app
+          image: ghcr.io/dein-user/fastapi-k8s-example:__VERSION__
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
