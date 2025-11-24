@@ -52,7 +52,7 @@ jobs:
       - name: Build Docker image
         working-directory: ${{ github.workspace }}
         run: |
-          docker build -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:latest 
+          docker build -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:latest .
 
       - name: Push Docker image
         run: |
