@@ -18,7 +18,7 @@ spec:
         kubernetes.io/hostname: base-vm
       containers:
         - name: fastapi-app
-          image: ghcr.io/skrrskrrs/fastapi-k8s-example:8131017fa1916ef14810909e288e664a14149ed0
+          image: ghcr.io/skrrskrrs/fastapi-k8s-example:e7c6eb4c0dadafc8d3b8cdcbe36a65ca27d993f2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
