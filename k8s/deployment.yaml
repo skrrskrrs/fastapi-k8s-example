@@ -14,8 +14,6 @@ spec:
       labels:
         app: fastapi-app
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: base-vm
       containers:
         - name: fastapi-app
           image: ghcr.io/skrrskrrs/fastapi-k8s-example:8733ad62beb4f02ee6127d031f5a1303111ef349
